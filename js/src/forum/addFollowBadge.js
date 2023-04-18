@@ -20,6 +20,11 @@ export default function addFollowBadge() {
 
   extend(User.prototype, 'badges', function (badges) {
     if (this.followed()) {
+
+      if (typeof badges == 'undefined'){
+        return ;
+      }
+
       badges.add(
         'user-following',
         <Badge label={app.translator.trans(`ianm-follow-users.forum.badge.label.${this.followed()}`)} icon="fas fa-user-friends" type="friend" />
